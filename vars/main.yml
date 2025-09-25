@@ -1,0 +1,8 @@
+---
+# vars file for apache
+
+pkg_name: apache2
+pkg_state: present
+svc_name: apache2
+svc_state: started
+dest_name: /var/www/html

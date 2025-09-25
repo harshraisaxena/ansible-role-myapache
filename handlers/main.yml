@@ -1,0 +1,9 @@
+---
+# handlers file for apache
+- name: restart "{{ svc_name }}" service
+  service:
+    name: "{{ svc_name }}"
+    state: restarted
+- name: command execution
+  debug:
+    msg: "apt repo updated successfully"

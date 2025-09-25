@@ -1,0 +1,19 @@
+---
+# tasks file for apache
+
+- name: update apt repo
+  command: apt update
+  notify: command execution
+- name: install {{ pkg_name }} server
+  package:
+    name: "{{ pkg_name }}"
+    state: "{{ pkg_state }}"
+- name: start {{ svc_name }} service
+  service:
+    name: "{{ svc_name }}"
+    state: "{{ svc_state }}"
+- name: copy html file on {{ pkg_name }} server
+  copy:
+    src: index.html
+    dest: "{{ dest_name }}"
+  notify: restart "{{ svc_name }}" service
